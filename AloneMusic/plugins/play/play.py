@@ -34,15 +34,29 @@ from AloneMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
 
 
-EMOJII = ["🔥", "💋", "🥺", "😒", "💖",
-          "💘", "💕", "✨", "🧪", "🥰",
-          "🚩", "🫦", "💔", "🦠",
-          "😓", "🫧"]
+EMOJII = [
+    "🔥",
+    "💋",
+    "🥺",
+    "😒",
+    "💖",
+    "💘",
+    "💕",
+    "✨",
+    "🧪",
+    "🥰",
+    "🚩",
+    "🫦",
+    "💔",
+    "🦠",
+    "😓",
+    "🫧",
+]
 
 
 async def delete_after_delay(msg):
     try:
-        await asyncio.sleep(60)        
+        await asyncio.sleep(60)
         await msg.delete()
     except Exception:
         pass
@@ -50,8 +64,16 @@ async def delete_after_delay(msg):
 
 @app.on_message(
     filters.command(
-        ["play", "vplay", "cplay", "cvplay",
-         "playforce", "vplayforce", "cplayforce", "cvplayforce"]
+        [
+            "play",
+            "vplay",
+            "cplay",
+            "cvplay",
+            "playforce",
+            "vplayforce",
+            "cplayforce",
+            "cvplayforce",
+        ]
     )
     & filters.group
     & ~BANNED_USERS
@@ -77,9 +99,7 @@ async def play_commnd(
     asyncio.create_task(delete_after_delay(sticker_msg))
 
     # स्टिकर के बाद का play message
-    mystic = await message.reply_text(
-        _["play_2"].format(channel) if channel else emoji
-    )
+    mystic = await message.reply_text(_["play_2"].format(channel) if channel else emoji)
     plist_id = None
     slider = None
     plist_type = None
