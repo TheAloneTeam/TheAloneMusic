@@ -1,0 +1,24 @@
+version: "1"
+
+services:
+  - name: alonemusic-bot
+    type: container
+    image: koyeb/python:3.11
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env:
+      API_ID: ""
+      API_HASH: ""
+      BOT_TOKEN: ""
+      LOGGER_ID: ""
+      MONGO_DB_URI: ""
+      OWNER_ID: ""
+      STRING_SESSION: ""
+    plan: starter
+    region: ewr
+    instanceCount: 1
+    instanceSize: s
+    startCommand: python3 -m AloneMusic
+    autoDeploy: true
+    mounts: []

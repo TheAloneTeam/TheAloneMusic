@@ -36,4 +36,3 @@ jobs:
           committer: TheAloneTeam <TheAloneTeam@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: true
-          

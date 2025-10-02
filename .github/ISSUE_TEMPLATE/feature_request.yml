@@ -1,0 +1,10 @@
+name: Feature request
+description: Suggest a new feature
+title: "[FEATURE]"
+labels: ["enhancement"]
+body:
+  - type: input
+    id: description
+    attributes:
+      label: Feature description
+      description: Describe your idea

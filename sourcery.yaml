@@ -1,0 +1,42 @@
+# Sourcery configuration for AloneMusic
+# Docs: https://docs.sourcery.ai/Configuration/Project-Settings/
+
+version: 1
+
+# Files/folders to ignore
+ignore:
+  - venv/*
+  - .venv/*
+  - __pycache__/*
+  - migrations/*
+  - tests/*
+  - *.md
+  - *.yml
+  - *.yaml
+
+# Refactor rules
+refactor:
+  enable:
+    - inline-immediately-returned-variable
+    - remove-redundant-if
+    - simplify-boolean-comparison
+    - merge-nested-ifs
+    - merge-dict-assign
+    - for-else-to-any-all
+  skip:
+    - de-morgan        # optional: keep "not (a and b)" instead of "not a or not b"
+
+# Code quality metrics
+metrics:
+  quality_threshold: 30.0
+
+# Duplicate code detection
+clone_detection:
+  min_lines: 5
+  min_duplicates: 2
+
+# GitHub integration (optional)
+github:
+  labels:
+    - "sourcery"
+  sourcery_branch: "sourcery/{base_branch}"

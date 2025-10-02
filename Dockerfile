@@ -1,15 +1,20 @@
-FROM nikolaik/python-nodejs:python3.10-nodejs19
+FROM nikolaik/python-nodejs:python3.10-nodejs20
 
-# Replace old Debian repos with archive repos
-RUN sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list \
-    && sed -i '/security.debian.org/d' /etc/apt/sources.list \
-    && apt-get update \
+# Install ffmpeg directly
+RUN apt-get update \
     && apt-get install -y --no-install-recommends ffmpeg \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-COPY . /app/
 WORKDIR /app/
-RUN pip3 install --no-cache-dir -U -r requirements.txt
+
+# Copy pyproject.toml first
+COPY pyproject.toml /app/
+
+# Install dependencies
+RUN pip install .
+
+# Copy rest of the repo
+COPY . /app/
 
 CMD bash start

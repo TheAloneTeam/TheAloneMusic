@@ -1,0 +1,14 @@
+name: Bug report
+description: Report a bug in AloneMusic
+title: "[BUG]"
+labels: ["bug"]
+body:
+  - type: input
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Describe step by step
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
